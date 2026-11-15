@@ -1,0 +1,14 @@
+{
+  "title": "Beleg Stellplatz-Miete",
+  "number": "Beleg-Nr.",
+  "date": "Zahlungsdatum",
+  "from": "Vermieter",
+  "to": "Mieter",
+  "item": "Leistung",
+  "spot": "Stellplatz {spot} ({label})",
+  "period": "Zeitraum: {start} – {end}",
+  "amount": "Betrag",
+  "refunded": "Vollständig erstattet am {date}",
+  "note": "Private Vermietung unter Bewohnern. Es wird keine Umsatzsteuer ausgewiesen.",
+  "footer": "Erstellt von Stellplatz-Sharing"
+}

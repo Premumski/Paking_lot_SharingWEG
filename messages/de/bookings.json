@@ -1,0 +1,17 @@
+{
+  "title": "Meine Buchungen",
+  "asTenant": "Als Mieter",
+  "asOwner": "Als Anbieter",
+  "upcoming": "Kommende und offene",
+  "past": "Vergangene und beendete",
+  "spot": "Platz",
+  "period": "Zeitraum",
+  "status": "Status",
+  "price": "Preis",
+  "actions": "Aktionen",
+  "none": "Keine Einträge.",
+  "details": "Details",
+  "contract": "Vertrag",
+  "confirm": "Zusagen",
+  "decline": "Ablehnen"
+}

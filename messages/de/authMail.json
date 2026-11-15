@@ -1,0 +1,6 @@
+{
+  "inviteSubject": "Einladung zum Stellplatz-Sharing",
+  "inviteBody": "Hallo {name},\n\ndie Verwaltung hat ein Konto für dich angelegt. Lege über diesen Link dein Passwort fest (gültig 72 Stunden, nur einmal nutzbar):\n\n{url}\n\nViele Grüße\nStellplatz-Sharing",
+  "resetSubject": "Passwort zurücksetzen",
+  "resetBody": "Hallo {name},\n\nüber diesen Link kannst du ein neues Passwort festlegen (gültig 1 Stunde):\n\n{url}\n\nWenn du das nicht angefordert hast, ignoriere diese E-Mail.\n\nViele Grüße\nStellplatz-Sharing"
+}

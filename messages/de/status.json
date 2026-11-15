@@ -1,0 +1,11 @@
+{
+  "draft": "Zahlung offen",
+  "requested": "Angefragt",
+  "confirmed": "Zugesagt",
+  "active": "Läuft",
+  "completed": "Abgeschlossen",
+  "declined": "Abgelehnt",
+  "withdrawn": "Zurückgezogen",
+  "expired": "Abgelaufen",
+  "cancelled": "Storniert"
+}

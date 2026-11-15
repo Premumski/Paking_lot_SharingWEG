@@ -1,0 +1,11 @@
+{
+  "requestNew": "Neue Anfrage für meinen Platz",
+  "requestConfirmed": "Zusage",
+  "requestDeclined": "Ablehnung",
+  "requestExpired": "Anfrage abgelaufen",
+  "bookingCancelled": "Stornierung",
+  "paymentProblem": "Zahlungsproblem",
+  "startsSoon": "Beginn in 1 Stunde",
+  "endsSoon": "Ende in 30 Minuten",
+  "problemReported": "Problemmeldung"
+}

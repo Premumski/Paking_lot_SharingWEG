@@ -1,0 +1,9 @@
+{
+  "DRAFT": "Entwurf (Zahlung offen)",
+  "REQUESTED": "Angefragt",
+  "CONFIRMED": "Zugesagt",
+  "DECLINED": "Abgelehnt",
+  "WITHDRAWN": "Zurückgezogen",
+  "EXPIRED": "Abgelaufen",
+  "CANCELLED": "Storniert"
+}

@@ -1,0 +1,21 @@
+# O-01 / S-01: automatic Let's Encrypt certificate, HTTPS only, HSTS.
+{
+	email {$ACME_EMAIL}
+	servers {
+		protocols h1 h2 h3
+	}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+	request_body {
+		max_size 25MB
+	}
+	# No access log: avoids personal data (IP addresses, URLs) in logs (S-05).
+	reverse_proxy app:3000
+}

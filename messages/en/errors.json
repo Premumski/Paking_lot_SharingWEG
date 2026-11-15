@@ -1,0 +1,117 @@
+{
+  "unexpected": "Unexpected error. Please try again.",
+  "forbidden": "You are not allowed to do this.",
+  "notFound": "Not found.",
+  "auth": {
+    "invalidCredentials": "E-mail or password is wrong, or the account is locked.",
+    "rateLimited": "Too many attempts. Please wait {minutes} minutes.",
+    "invalidCode": "The code is invalid.",
+    "enrollmentExpired": "The setup has expired. Please reload the page.",
+    "totpRequiredForAdmins": "Two-factor authentication is mandatory for admins.",
+    "passwordMismatch": "The passwords do not match.",
+    "wrongPassword": "The current password is wrong.",
+    "tokenInvalid": "This link is invalid, has expired or has already been used.",
+    "loginRequired": "Please log in.",
+    "password": {
+      "tooShort": "The password must have at least 12 characters.",
+      "tooLong": "The password is too long.",
+      "leaked": "This password is known from data breaches. Please choose another one."
+    }
+  },
+  "booking": {
+    "spotNotFound": "This spot does not exist.",
+    "ownSpot": "You cannot request your own spot.",
+    "noOwner": "This spot has no active owner.",
+    "notAvailable": "The period is not fully within a release (or the spot is paused).",
+    "overlap": "The spot is already booked for this period.",
+    "fairnessLimit": "You already have the maximum number of confirmed bookings that have not started yet.",
+    "fairnessLimitTenant": "The tenant already has the maximum number of confirmed bookings that have not started yet.",
+    "openRequestLimit": "You already have the maximum number of open requests.",
+    "ownerNotOnboarded": "The owner has not connected a payout account yet.",
+    "extensionInvalid": "This booking cannot be extended.",
+    "contractRequired": "Please accept the rental contract.",
+    "noContractTemplate": "No contract template has been provided yet. Please contact the property management.",
+    "notPending": "This request is no longer open.",
+    "expired": "This request has expired.",
+    "notConfirmed": "This booking is not confirmed.",
+    "alreadyStarted": "The booking has already started and can no longer be cancelled.",
+    "reasonRequired": "Please give a short reason.",
+    "horizon": {
+      "invalidRange": "The end must be after the start.",
+      "notOnSlot": "Please choose times in 15-minute steps.",
+      "tooShort": "The booking is shorter than the minimum duration.",
+      "tooLong": "The booking is longer than the maximum duration.",
+      "tooSoon": "The start is before the earliest possible time.",
+      "tooFarAhead": "A booking of this duration cannot start that far ahead."
+    }
+  },
+  "payment": {
+    "noRetry": "No payment is required for this booking.",
+    "retryExpired": "The deadline for paying has passed."
+  },
+  "problem": {
+    "onlyConfirmed": "Problems can only be reported for confirmed bookings.",
+    "category": "Please choose a type.",
+    "text": "Please describe the problem (5–2000 characters).",
+    "tooManyPhotos": "At most 3 photos.",
+    "photoTooLarge": "A photo is larger than 5 MB.",
+    "photoType": "Only JPEG, PNG or WebP photos."
+  },
+  "profile": {
+    "name": "Please enter a name (2–80 characters).",
+    "phone": "The phone number is invalid.",
+    "locale": "Invalid language.",
+    "currentSession": "Use “Log out” to end the current session."
+  },
+  "spot": {
+    "invalidPrice": "Please enter valid prices (e.g. 2.50).",
+    "onboardingRequired": "To set prices above €0 you first need to connect your payout account.",
+    "instantRange": "The duration threshold must be between 15 minutes and 365 days.",
+    "tierInvalid": "Invalid value for the booking horizon.",
+    "tierAboveGlobal": "The booking horizon can only be shortened.",
+    "invalidDate": "Invalid date.",
+    "invalidRange": "Invalid period.",
+    "notOnSlot": "Please choose times in 15-minute steps.",
+    "inPast": "The period is in the past.",
+    "noWeekdays": "Please choose at least one weekday.",
+    "invalidRule": "Invalid rule.",
+    "conflicts": "Collides with {count} existing confirmation(s).",
+    "affectsRunningBooking": "This change affects a booking in progress and is therefore not possible."
+  },
+  "admin": {
+    "invalidUser": "Please fill in name, a valid e-mail and apartment.",
+    "emailExists": "This e-mail is already in use.",
+    "lastAdmin": "The last admin account cannot lose its rights.",
+    "notInvited": "The account is already active.",
+    "notSelf": "You cannot do this to your own account.",
+    "openBookings": "There are still open bookings or requests.",
+    "ownsSpots": "Spots are still assigned to this account. Please reassign them first.",
+    "csvTooLarge": "The CSV file is too large.",
+    "planNumber": "Plan number: 1–20 characters, letters, digits, - or _.",
+    "planNumberExists": "This plan number is already in use.",
+    "label": "Please enter a label.",
+    "spotType": "Invalid type.",
+    "ownerInvalid": "Invalid owner.",
+    "spotHasBookings": "The spot has open bookings.",
+    "spotHasHistory": "The spot has a booking history and cannot be deleted. Remove the owner to retire it.",
+    "planMissing": "Please choose an SVG or Draw.io file.",
+    "levelName": "Please enter the level name (1–30 characters).",
+    "svg": {
+      "tooLarge": "The plan file is larger than 2 MB.",
+      "doctype": "SVG files with DOCTYPE/ENTITY are rejected for security reasons.",
+      "invalid": "The file is not a valid SVG.",
+      "noSvgRoot": "No svg root element found."
+    },
+    "drawio": {
+      "tooLarge": "The plan file is larger than 2 MB.",
+      "doctype": "Files with DOCTYPE/ENTITY are rejected for security reasons.",
+      "invalid": "The file is not a valid Draw.io file.",
+      "noSpots": "No spots were found in the Draw.io file. The spots must be on the layer \"Parkplätze\" and be labelled with the plan number.",
+      "duplicateLevel": "Two levels in the Draw.io file have the same name.",
+      "duplicateSpot": "A plan number occurs more than once in the Draw.io file."
+    },
+    "settingsInvalid": "Please check your input.",
+    "settingOutOfRange": "A value is outside the allowed range ({field}).",
+    "templateTooShort": "The template is too short (fill in both languages)."
+  }
+}

@@ -1,0 +1,395 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  RESIDENT
+}
+
+enum UserStatus {
+  INVITED
+  ACTIVE
+  LOCKED
+  DELETED
+}
+
+enum TokenType {
+  INVITE
+  RESET
+  ACTION
+}
+
+enum SpotType {
+  STANDARD
+  COMPACT
+  LARGE
+  EV
+  MOTORBIKE
+  ACCESSIBLE
+}
+
+enum RuleKind {
+  MANUAL
+  WEEKLY
+  WEEKENDS
+  ALWAYS
+}
+
+/// DRAFT is a technical pre-state while the tenant is still adding a payment method.
+/// The six user-visible states are REQUESTED, CONFIRMED, DECLINED, WITHDRAWN, EXPIRED, CANCELLED.
+enum BookingStatus {
+  DRAFT
+  REQUESTED
+  CONFIRMED
+  DECLINED
+  WITHDRAWN
+  EXPIRED
+  CANCELLED
+}
+
+enum CancelledBy {
+  TENANT
+  OWNER
+  SYSTEM
+  ADMIN
+}
+
+enum PaymentStatus {
+  NONE
+  METHOD_SAVED
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+  REFUND_PENDING
+  REFUNDED
+}
+
+enum ProblemCategory {
+  SPOT_OCCUPIED
+  OVERSTAY
+  DAMAGE
+  OTHER
+}
+
+model User {
+  id                  String     @id @default(uuid()) @db.Uuid
+  email               String     @unique
+  name                String
+  phone               String?
+  apartment           String
+  role                Role       @default(RESIDENT)
+  status              UserStatus @default(INVITED)
+  passwordHash        String?
+  locale              String     @default("de")
+  totpSecret          String?
+  totpEnabled         Boolean    @default(false)
+  notificationPrefs   Json       @default("{}")
+  paymentAccountId    String?
+  paymentOnboarded    Boolean    @default(false)
+  deletionRequestedAt DateTime?
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  sessions          Session[]
+  tokens            Token[]
+  spots             ParkingSpot[]
+  bookingsAsTenant  Booking[]          @relation("tenant")
+  pushSubscriptions PushSubscription[]
+  problemReports    ProblemReport[]    @relation("reporter")
+  paymentCustomers  PaymentCustomer[]
+}
+
+model Session {
+  id          String   @id @default(uuid()) @db.Uuid
+  tokenHash   String   @unique
+  userId      String   @db.Uuid
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mfaVerified Boolean  @default(false)
+  userAgent   String?
+  ipPrefix    String?
+  createdAt   DateTime @default(now())
+  lastSeenAt  DateTime @default(now())
+  expiresAt   DateTime
+
+  @@index([userId])
+}
+
+model Token {
+  id        String    @id @default(uuid()) @db.Uuid
+  tokenHash String    @unique
+  type      TokenType
+  userId    String    @db.Uuid
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payload   Json?
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, type])
+}
+
+model RateLimit {
+  key         String    @id
+  count       Int       @default(0)
+  windowStart DateTime
+  lockedUntil DateTime?
+  lockLevel   Int       @default(0)
+}
+
+model ParkingSpot {
+  id                String   @id @default(uuid()) @db.Uuid
+  planNumber        String   @unique
+  label             String
+  type              SpotType @default(STANDARD)
+  ownerId           String?  @db.Uuid
+  owner             User?    @relation(fields: [ownerId], references: [id])
+  pricePerHourCents Int      @default(0)
+  pricePerDayCents  Int      @default(0)
+  description       String   @default("")
+  accessNotes       String   @default("")
+  instantBooking    Boolean  @default(false)
+  instantMaxMinutes Int      @default(240)
+  paused            Boolean  @default(false)
+  tier1Minutes      Int?
+  tier2Days         Int?
+  tier3Months       Int?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  rules    AvailabilityRule[]
+  blocks   Blocking[]
+  bookings Booking[]
+}
+
+model AvailabilityRule {
+  id        String      @id @default(uuid()) @db.Uuid
+  spotId    String      @db.Uuid
+  spot      ParkingSpot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+  kind      RuleKind
+  /// MANUAL: start/end of the window. ALWAYS/WEEKLY/WEEKENDS: start = valid from.
+  startsAt  DateTime
+  endsAt    DateTime?
+  /// WEEKLY: ISO weekdays 1 = Monday ... 7 = Sunday
+  weekdays  Int[]
+  /// WEEKLY: local time of day in minutes since midnight (Europe/Berlin)
+  startMin  Int?
+  endMin    Int?
+  /// Optional end date for recurring rules (exclusive, absolute instant)
+  validUntil DateTime?
+  createdAt DateTime    @default(now())
+
+  @@index([spotId])
+}
+
+model Blocking {
+  id        String      @id @default(uuid()) @db.Uuid
+  spotId    String      @db.Uuid
+  spot      ParkingSpot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+  startsAt  DateTime
+  endsAt    DateTime
+  note      String      @default("")
+  createdAt DateTime    @default(now())
+
+  @@index([spotId])
+}
+
+model Booking {
+  id                  String        @id @default(uuid()) @db.Uuid
+  spotId              String        @db.Uuid
+  spot                ParkingSpot   @relation(fields: [spotId], references: [id])
+  tenantId            String        @db.Uuid
+  tenant              User          @relation("tenant", fields: [tenantId], references: [id])
+  /// Owner at the time of the request (ownership may change later)
+  ownerId             String        @db.Uuid
+  startsAt            DateTime
+  endsAt              DateTime
+  status              BookingStatus @default(DRAFT)
+  priceCents          Int
+  visitorName         String?
+  licensePlate        String?
+  instant             Boolean       @default(false)
+  extendsBookingId    String?       @db.Uuid
+  contractVersion     Int?
+  contractAcceptedAt  DateTime?
+  paymentStatus       PaymentStatus @default(NONE)
+  paymentMethodType   String?
+  paymentMethodRef    String?
+  paymentRetryUntil   DateTime?
+  cancelledBy         CancelledBy?
+  cancelReason        String?
+  requestedAt         DateTime?
+  decidedAt           DateTime?
+  cancelledAt         DateTime?
+  expiresAt           DateTime?
+  reminderStartSent   Boolean       @default(false)
+  reminderEndSent     Boolean       @default(false)
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  payments       Payment[]
+  contracts      Contract[]
+  problemReports ProblemReport[]
+
+  @@index([spotId, status])
+  @@index([tenantId, status])
+  @@index([ownerId, status])
+}
+
+model Payment {
+  id             String        @id @default(uuid()) @db.Uuid
+  bookingId      String        @db.Uuid
+  booking        Booking       @relation(fields: [bookingId], references: [id])
+  provider       String
+  providerRef    String?       @unique
+  accountRef     String?
+  amountCents    Int
+  feeCents       Int           @default(0)
+  status         PaymentStatus
+  methodType     String?
+  refundRef      String?
+  refundedAt     DateTime?
+  paidAt         DateTime?
+  failureCode    String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([bookingId])
+}
+
+model PaymentCustomer {
+  id          String @id @default(uuid()) @db.Uuid
+  userId      String @db.Uuid
+  user        User   @relation(fields: [userId], references: [id])
+  provider    String
+  accountRef  String
+  customerRef String
+
+  @@unique([userId, provider, accountRef])
+}
+
+model WebhookEvent {
+  id          String   @id
+  provider    String
+  type        String
+  receivedAt  DateTime @default(now())
+}
+
+model ContractTemplate {
+  id        String   @id @default(uuid()) @db.Uuid
+  version   Int      @unique
+  bodyDe    String
+  bodyEn    String
+  createdAt DateTime @default(now())
+  createdBy String?  @db.Uuid
+}
+
+/// Immutable: a database trigger rejects UPDATE and DELETE.
+model Contract {
+  id        String   @id @default(uuid()) @db.Uuid
+  bookingId String   @db.Uuid
+  booking   Booking  @relation(fields: [bookingId], references: [id])
+  version   Int
+  locale    String
+  pdf       Bytes
+  sha256    String
+  createdAt DateTime @default(now())
+
+  @@unique([bookingId, locale])
+}
+
+model LegalPage {
+  key       String   @id
+  bodyDe    String
+  bodyEn    String
+  updatedAt DateTime @updatedAt
+}
+
+model Settings {
+  id                  Int      @id @default(1)
+  tier1Minutes        Int      @default(2880)
+  tier2Days           Int      @default(14)
+  tier3Months         Int      @default(1)
+  maxDurationValue    Int      @default(1)
+  maxDurationUnit     String   @default("MONTH")
+  minLeadMinutes      Int      @default(0)
+  minDurationMinutes  Int      @default(60)
+  fairnessLimit       Int      @default(3)
+  openRequestLimit    Int      @default(5)
+  requestExpiryHours  Int      @default(48)
+  devClockOffsetMs    BigInt   @default(0)
+  updatedAt           DateTime @updatedAt
+}
+
+/// One row per garage level (K-01); uploading a level again replaces its plan.
+model GaragePlan {
+  id         String   @id @default(uuid()) @db.Uuid
+  /// Level name shown on the map, e.g. "UG -1"
+  name       String   @unique
+  position   Int      @default(0)
+  svg        String
+  uploadedAt DateTime @default(now())
+  uploadedBy String?  @db.Uuid
+}
+
+model PushSubscription {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+}
+
+model ProblemReport {
+  id           String          @id @default(uuid()) @db.Uuid
+  bookingId    String          @db.Uuid
+  booking      Booking         @relation(fields: [bookingId], references: [id])
+  reporterId   String          @db.Uuid
+  reporter     User            @relation("reporter", fields: [reporterId], references: [id])
+  category     ProblemCategory
+  text         String
+  createdAt    DateTime        @default(now())
+  resolvedAt   DateTime?
+  resolvedById String?         @db.Uuid
+  photos       ProblemPhoto[]
+}
+
+model ProblemPhoto {
+  id        String        @id @default(uuid()) @db.Uuid
+  reportId  String        @db.Uuid
+  report    ProblemReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  mime      String
+  data      Bytes
+}
+
+/// Append-only: a database trigger rejects UPDATE and only allows DELETE of rows older than 2 years.
+model AuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  at         DateTime @default(now())
+  actorId    String?  @db.Uuid
+  action     String
+  entityType String?
+  entityId   String?
+  details    Json?
+
+  @@index([at])
+  @@index([entityType, entityId])
+}
+
+/// Outbox of sent e-mails, kept only when DEV_TOOLS=true (for local testing).
+model DevMail {
+  id        String   @id @default(uuid()) @db.Uuid
+  to        String
+  subject   String
+  text      String
+  createdAt DateTime @default(now())
+}

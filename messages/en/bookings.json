@@ -1,0 +1,17 @@
+{
+  "title": "My bookings",
+  "asTenant": "As tenant",
+  "asOwner": "As owner",
+  "upcoming": "Upcoming and open",
+  "past": "Past and closed",
+  "spot": "Spot",
+  "period": "Period",
+  "status": "Status",
+  "price": "Price",
+  "actions": "Actions",
+  "none": "No entries.",
+  "details": "Details",
+  "contract": "Contract",
+  "confirm": "Confirm",
+  "decline": "Decline"
+}

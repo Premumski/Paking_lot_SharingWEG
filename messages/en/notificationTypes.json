@@ -1,0 +1,11 @@
+{
+  "requestNew": "New request for my spot",
+  "requestConfirmed": "Confirmation",
+  "requestDeclined": "Decline",
+  "requestExpired": "Request expired",
+  "bookingCancelled": "Cancellation",
+  "paymentProblem": "Payment problem",
+  "startsSoon": "Starts in 1 hour",
+  "endsSoon": "Ends in 30 minutes",
+  "problemReported": "Problem report"
+}

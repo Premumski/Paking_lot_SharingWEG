@@ -1,0 +1,9 @@
+{
+  "title": "Anfrage beantworten",
+  "invalid": "Dieser Link ist ungültig, abgelaufen oder gehört zu einem anderen Konto.",
+  "alreadyHandled": "Diese Anfrage wurde bereits bearbeitet.",
+  "open": "Buchung öffnen",
+  "summary": "Anfrage von {tenant} für Platz {spot}:",
+  "confirm": "Jetzt zusagen",
+  "decline": "Jetzt ablehnen"
+}

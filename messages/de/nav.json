@@ -1,0 +1,14 @@
+{
+  "brand": "Stellplatz-Sharing",
+  "main": "Hauptnavigation",
+  "menu": "Menü",
+  "logout": "Abmelden",
+  "skipToContent": "Zum Inhalt springen",
+  "search": "Platz suchen",
+  "bookings": "Meine Buchungen",
+  "mySpots": "Meine Plätze",
+  "money": "Einnahmen & Ausgaben",
+  "profile": "Profil",
+  "admin": "Verwaltung",
+  "dev": "Testwerkzeuge"
+}

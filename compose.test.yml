@@ -1,0 +1,54 @@
+# Local test setup: one command starts everything with seed data, simulated payments and a mail inbox.
+#   docker compose -f compose.test.yml up --build
+# App: http://localhost:3000   Mailpit (all e-mails): http://localhost:8025
+# Reset the data:  docker compose -f compose.test.yml run --rm setup
+name: stellplatz-test
+
+x-env: &env
+  DATABASE_URL: postgresql://parking:parking@db:5432/parking
+  APP_URL: http://localhost:3000
+  SESSION_SECRET: test-only-session-secret-0123456789abcdef
+  PAYMENT_PROVIDER: mock
+  MOCK_WEBHOOK_SECRET: test-only-mock-webhook-secret
+  SMTP_HOST: mail
+  SMTP_PORT: "1025"
+  MAIL_FROM: "Stellplatz-Sharing (Test) <noreply@stellplatz.test>"
+  DEV_TOOLS: "true"
+  HIBP_ENABLED: "false"
+  MAILPIT_URL: http://localhost:8025
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: parking
+      POSTGRES_PASSWORD: parking
+      POSTGRES_DB: parking
+    volumes: [testdb:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parking"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  mail:
+    image: axllent/mailpit:v1.27
+    ports: ["8025:8025"]
+
+  setup:
+    build: { context: ., target: tools }
+    environment: *env
+    command: ["sh", "-c", "npx prisma migrate deploy && npx tsx prisma/seed.ts"]
+    depends_on:
+      db: { condition: service_healthy }
+
+  app:
+    build: { context: ., target: runner }
+    environment: *env
+    ports: ["3000:3000"]
+    depends_on:
+      setup: { condition: service_completed_successfully }
+      mail: { condition: service_started }
+
+volumes:
+  testdb:

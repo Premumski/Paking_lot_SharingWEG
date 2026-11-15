@@ -1,0 +1,23 @@
+{
+  "title": "Income & expenses",
+  "onboardingReturned": "Thank you! As soon as the payment provider approves your account, you can set prices above €0.",
+  "income": "Income as owner",
+  "payoutAccount": "Payout account",
+  "connected": "connected",
+  "notConnected": "not connected – only €0 prices possible",
+  "feeInfo": "No platform fee. The payment provider fee (approx. 1.5% + €0.25 for cards, €0.35 for direct debit) is paid by you as the owner.",
+  "connectAccount": "Connect account",
+  "manageAccount": "Manage account",
+  "booking": "Booking",
+  "amount": "Amount",
+  "fee": "Fee",
+  "net": "Net",
+  "status": "Status",
+  "none": "No entries.",
+  "payouts": "Payouts",
+  "noPayouts": "No payouts yet.",
+  "payoutStatus": { "pending": "scheduled", "in_transit": "in transit", "paid": "paid out", "failed": "failed", "canceled": "cancelled" },
+  "statement": "Annual statement",
+  "expenses": "Expenses as tenant",
+  "receipt": "Receipt"
+}

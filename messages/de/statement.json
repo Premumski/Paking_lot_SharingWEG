@@ -1,0 +1,17 @@
+{
+  "title": "Jahresauszug {year}",
+  "date": "Datum",
+  "bookingId": "Buchung",
+  "spot": "Platz",
+  "start": "Beginn",
+  "end": "Ende",
+  "period": "Zeitraum",
+  "amount": "Betrag",
+  "fee": "Gebühr",
+  "payout": "Netto",
+  "status": "Status",
+  "paid": "bezahlt",
+  "refunded": "erstattet",
+  "total": "Summe Netto: {sum}",
+  "footer": "Gebühren sind Schätzwerte; maßgeblich ist die Abrechnung des Zahlungsdienstleisters. Erstellt von Stellplatz-Sharing."
+}

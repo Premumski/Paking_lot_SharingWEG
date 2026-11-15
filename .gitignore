@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.dev.example
+test-results/
+playwright-report/
+backups/
+# Draw.io source of the garage plan (contains the electrical planning); only docs/plans is published
+Lageplan.drawio
+.DS_Store

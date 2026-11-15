@@ -1,0 +1,70 @@
+# Production on a Hetzner Cloud server (O-01). Start everything with:  docker compose up -d --build
+# Configuration and secrets only via .env (O-06), see .env.example.
+name: stellplatz
+
+x-logging: &logging
+  # S-05: logs rotate; with the journald setup from the README they are kept 30 days.
+  driver: json-file
+  options: { max-size: "10m", max-file: "5" }
+
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443", "443:443/udp"]
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in .env}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./ops/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [app]
+    logging: *logging
+
+  app:
+    build: { context: ., target: runner }
+    image: stellplatz-sharing:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parking}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-parking}
+      APP_URL: https://${DOMAIN}
+      NODE_ENV: production
+    expose: ["3000"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    logging: *logging
+
+  migrate:
+    build: { context: ., target: tools }
+    image: stellplatz-sharing-tools:latest
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parking}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-parking}
+      APP_URL: https://${DOMAIN}
+    command: ["npx", "prisma", "migrate", "deploy"]
+    depends_on:
+      db: { condition: service_healthy }
+    logging: *logging
+
+  db:
+    image: postgres:16.10-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-parking}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-parking}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    # O-03: no published port – the database is only reachable inside the Docker network.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-parking}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    logging: *logging
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

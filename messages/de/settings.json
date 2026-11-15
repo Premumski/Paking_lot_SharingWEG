@@ -1,0 +1,16 @@
+{
+  "title": "Buchungshorizont & Zeitregeln",
+  "tier1Hours": { "label": "Stufe 1: Buchungen unter 1 Tag – Vorlauf in Stunden", "help": "Standard 48 h (2 Tage). Bereich 1 h – 30 Tage." },
+  "tier2Days": { "label": "Stufe 2: 1 Tag bis unter 1 Woche – Vorlauf in Tagen", "help": "Standard 14 Tage. Bereich 1–90 Tage." },
+  "tier3Months": { "label": "Stufe 3: 1 Woche bis 1 Monat – Vorlauf in Monaten", "help": "Standard 1 Monat. Bereich 1–12 Monate." },
+  "maxDuration": { "label": "Höchstdauer einer Buchung", "unit": "Einheit", "help": "Standard 1 Monat. Bereich 1 Tag – 12 Monate." },
+  "days": "Tage",
+  "months": "Monate",
+  "minLeadMinutes": { "label": "Mindestvorlauf in Minuten", "help": "Frühester Beginn ab jetzt. Standard 0. Bereich 0–48 h." },
+  "minDurationMinutes": { "label": "Mindestdauer in Minuten", "help": "Standard 60. Bereich 15 min – 24 h, in 15-Minuten-Schritten." },
+  "fairnessLimit": { "label": "Fairness-Grenze", "help": "Zugesagte, noch nicht begonnene Buchungen je Bewohner. Standard 3, 0 = unbegrenzt." },
+  "openRequestLimit": { "label": "Offene Anfragen je Bewohner", "help": "Standard 5. Bereich 1–20." },
+  "requestExpiryHours": { "label": "Ablauf unbeantworteter Anfragen (Stunden)", "help": "Anfragen laufen zum früheren Zeitpunkt von Buchungsbeginn oder X Stunden nach Eingang ab. Standard 48." },
+  "existingUntouched": "Änderungen gelten nur für neue Anfragen. Bestehende Buchungen und Anfragen bleiben unberührt.",
+  "save": "Speichern"
+}

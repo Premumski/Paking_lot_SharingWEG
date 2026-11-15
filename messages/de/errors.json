@@ -1,0 +1,117 @@
+{
+  "unexpected": "Unerwarteter Fehler. Bitte versuche es erneut.",
+  "forbidden": "Dafür fehlt dir die Berechtigung.",
+  "notFound": "Nicht gefunden.",
+  "auth": {
+    "invalidCredentials": "E-Mail oder Passwort ist falsch, oder das Konto ist gesperrt.",
+    "rateLimited": "Zu viele Versuche. Bitte warte {minutes} Minuten.",
+    "invalidCode": "Der Code ist ungültig.",
+    "enrollmentExpired": "Die Einrichtung ist abgelaufen. Bitte lade die Seite neu.",
+    "totpRequiredForAdmins": "Für Admins ist die Zwei-Faktor-Anmeldung Pflicht.",
+    "passwordMismatch": "Die Passwörter stimmen nicht überein.",
+    "wrongPassword": "Das aktuelle Passwort ist falsch.",
+    "tokenInvalid": "Dieser Link ist ungültig, abgelaufen oder wurde schon verwendet.",
+    "loginRequired": "Bitte melde dich an.",
+    "password": {
+      "tooShort": "Das Passwort muss mindestens 12 Zeichen haben.",
+      "tooLong": "Das Passwort ist zu lang.",
+      "leaked": "Dieses Passwort ist aus Datenlecks bekannt. Bitte wähle ein anderes."
+    }
+  },
+  "booking": {
+    "spotNotFound": "Dieser Platz existiert nicht.",
+    "ownSpot": "Du kannst deinen eigenen Platz nicht anfragen.",
+    "noOwner": "Dieser Platz hat keinen aktiven Eigentümer.",
+    "notAvailable": "Der Zeitraum liegt nicht vollständig in einer Freigabe (oder der Platz ist pausiert).",
+    "overlap": "Der Platz ist in diesem Zeitraum bereits vergeben.",
+    "fairnessLimit": "Du hast bereits die maximale Zahl an zugesagten, noch nicht begonnenen Buchungen.",
+    "fairnessLimitTenant": "Der Mieter hat bereits die maximale Zahl an zugesagten, noch nicht begonnenen Buchungen.",
+    "openRequestLimit": "Du hast bereits die maximale Zahl offener Anfragen.",
+    "ownerNotOnboarded": "Der Anbieter hat noch kein Auszahlungskonto verbunden.",
+    "extensionInvalid": "Diese Buchung kann nicht verlängert werden.",
+    "contractRequired": "Bitte bestätige den Mietvertrag.",
+    "noContractTemplate": "Es ist noch keine Vertragsvorlage hinterlegt. Bitte wende dich an die Verwaltung.",
+    "notPending": "Diese Anfrage ist nicht mehr offen.",
+    "expired": "Diese Anfrage ist abgelaufen.",
+    "notConfirmed": "Diese Buchung ist nicht zugesagt.",
+    "alreadyStarted": "Die Buchung hat bereits begonnen und kann nicht mehr storniert werden.",
+    "reasonRequired": "Bitte gib eine kurze Begründung an.",
+    "horizon": {
+      "invalidRange": "Das Ende muss nach dem Beginn liegen.",
+      "notOnSlot": "Bitte wähle Zeiten in 15-Minuten-Schritten.",
+      "tooShort": "Die Buchung ist kürzer als die Mindestdauer.",
+      "tooLong": "Die Buchung ist länger als die Höchstdauer.",
+      "tooSoon": "Der Beginn liegt vor dem frühestmöglichen Zeitpunkt.",
+      "tooFarAhead": "So weit im Voraus kann diese Buchungsdauer nicht beginnen."
+    }
+  },
+  "payment": {
+    "noRetry": "Für diese Buchung ist keine Nachzahlung nötig.",
+    "retryExpired": "Die Frist zum Nachzahlen ist abgelaufen."
+  },
+  "problem": {
+    "onlyConfirmed": "Probleme können nur zu zugesagten Buchungen gemeldet werden.",
+    "category": "Bitte wähle eine Art.",
+    "text": "Bitte beschreibe das Problem (5–2000 Zeichen).",
+    "tooManyPhotos": "Höchstens 3 Fotos.",
+    "photoTooLarge": "Ein Foto ist größer als 5 MB.",
+    "photoType": "Nur JPEG-, PNG- oder WebP-Fotos."
+  },
+  "profile": {
+    "name": "Bitte gib einen Namen an (2–80 Zeichen).",
+    "phone": "Die Telefonnummer ist ungültig.",
+    "locale": "Ungültige Sprache.",
+    "currentSession": "Die aktuelle Sitzung meldest du über „Abmelden“ ab."
+  },
+  "spot": {
+    "invalidPrice": "Bitte gib gültige Preise ein (z. B. 2,50).",
+    "onboardingRequired": "Für Preise über 0 € musst du zuerst dein Auszahlungskonto verbinden.",
+    "instantRange": "Die Dauer-Schwelle muss zwischen 15 Minuten und 365 Tagen liegen.",
+    "tierInvalid": "Ungültiger Wert für den Buchungshorizont.",
+    "tierAboveGlobal": "Der Buchungshorizont kann nur verkürzt werden.",
+    "invalidDate": "Ungültiges Datum.",
+    "invalidRange": "Ungültiger Zeitraum.",
+    "notOnSlot": "Bitte wähle Zeiten in 15-Minuten-Schritten.",
+    "inPast": "Der Zeitraum liegt in der Vergangenheit.",
+    "noWeekdays": "Bitte wähle mindestens einen Wochentag.",
+    "invalidRule": "Ungültige Regel.",
+    "conflicts": "Kollision mit {count} bestehenden Zusage(n).",
+    "affectsRunningBooking": "Diese Änderung betrifft eine laufende Buchung und ist deshalb nicht möglich."
+  },
+  "admin": {
+    "invalidUser": "Bitte fülle Name, gültige E-Mail und Wohnung aus.",
+    "emailExists": "Diese E-Mail ist bereits vergeben.",
+    "lastAdmin": "Das letzte Admin-Konto kann seine Rechte nicht verlieren.",
+    "notInvited": "Das Konto ist bereits aktiv.",
+    "notSelf": "Das kannst du nicht bei deinem eigenen Konto tun.",
+    "openBookings": "Es gibt noch offene Buchungen oder Anfragen.",
+    "ownsSpots": "Dem Konto sind noch Plätze zugeordnet. Bitte zuerst neu zuordnen.",
+    "csvTooLarge": "Die CSV-Datei ist zu groß.",
+    "planNumber": "Plan-Nummer: 1–20 Zeichen, Buchstaben, Ziffern, - oder _.",
+    "planNumberExists": "Diese Plan-Nummer ist bereits vergeben.",
+    "label": "Bitte gib eine Bezeichnung an.",
+    "spotType": "Ungültiger Typ.",
+    "ownerInvalid": "Ungültiger Eigentümer.",
+    "spotHasBookings": "Der Platz hat offene Buchungen.",
+    "spotHasHistory": "Der Platz hat Buchungshistorie und kann nicht gelöscht werden. Entferne den Eigentümer, um ihn stillzulegen.",
+    "planMissing": "Bitte wähle eine SVG- oder Draw.io-Datei.",
+    "levelName": "Bitte gib den Namen der Ebene an (1–30 Zeichen).",
+    "svg": {
+      "tooLarge": "Die Plan-Datei ist größer als 2 MB.",
+      "doctype": "SVG-Dateien mit DOCTYPE/ENTITY werden aus Sicherheitsgründen abgelehnt.",
+      "invalid": "Die Datei ist kein gültiges SVG.",
+      "noSvgRoot": "Kein svg-Wurzelelement gefunden."
+    },
+    "drawio": {
+      "tooLarge": "Die Plan-Datei ist größer als 2 MB.",
+      "doctype": "Dateien mit DOCTYPE/ENTITY werden aus Sicherheitsgründen abgelehnt.",
+      "invalid": "Die Datei ist keine gültige Draw.io-Datei.",
+      "noSpots": "In der Draw.io-Datei wurden keine Plätze gefunden. Die Plätze müssen im Layer „Parkplätze“ liegen und mit der Plan-Nummer beschriftet sein.",
+      "duplicateLevel": "Zwei Ebenen in der Draw.io-Datei haben denselben Namen.",
+      "duplicateSpot": "Eine Plan-Nummer kommt in der Draw.io-Datei mehrfach vor."
+    },
+    "settingsInvalid": "Bitte prüfe die Eingaben.",
+    "settingOutOfRange": "Ein Wert liegt außerhalb des erlaubten Bereichs ({field}).",
+    "templateTooShort": "Die Vorlage ist zu kurz (beide Sprachen ausfüllen)."
+  }
+}

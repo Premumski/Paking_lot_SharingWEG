@@ -1,0 +1,29 @@
+{
+  "greeting": "Hi {name},",
+  "openLink": "Open",
+  "footer": "You can switch off notifications in your profile: {url}",
+  "requestNew": { "subject": "New request for spot {spot}", "body": "{tenant} would like to rent your spot {spot} from {start} to {end} for {price}." },
+  "requestConfirmed": { "subject": "Confirmed: spot {spot}", "body": "The booking for spot {spot} from {start} to {end} ({price}) is confirmed. The rental contract is attached as PDF." },
+  "requestDeclined": { "subject": "Request declined: spot {spot}", "body": "Unfortunately your request for spot {spot} from {start} to {end} was declined." },
+  "requestExpired": { "subject": "Request expired: spot {spot}", "body": "Your request for spot {spot} from {start} to {end} was not answered in time and has expired." },
+  "bookingCancelled": { "subject": "Cancelled: spot {spot}", "body": "The booking for spot {spot} from {start} to {end} has been cancelled." },
+  "paymentProblem": { "subject": "Payment problem: spot {spot}", "body": "There was a problem with the payment for spot {spot} ({start} – {end}, {price})." },
+  "startsSoon": { "subject": "Starting soon: spot {spot}", "body": "Your booking for spot {spot} starts at {start}." },
+  "endsSoon": { "subject": "Ending soon: spot {spot}", "body": "Your booking for spot {spot} ends at {end}. Please vacate the spot on time or extend in the app." },
+  "problemReported": { "subject": "Problem report for spot {spot}", "body": "{reporter} reported a problem for the booking of spot {spot} ({start}):" },
+  "confirmLink": "Confirm with one click",
+  "declineLink": "Decline with one click",
+  "payoutHint": "You receive approx. {payout} after the payment provider fee.",
+  "ownerConfirmedHint": "Tenant: {tenant}. The tenant is now being charged.",
+  "freeSpotsHint": "Find other available spots for the same period here: {url}",
+  "refundHint": "The full amount of {price} will be refunded automatically.",
+  "cancelledByOwner": "The owner cancelled. Reason: {reason}",
+  "cancelledByTenant": "The tenant cancelled. The spot is available again.",
+  "cancelledBySystem": "The booking was cancelled automatically because the payment was not completed in time. The spot is available again.",
+  "paymentRetryHint": "Please pay in the app by {deadline}, otherwise the booking will be cancelled automatically.",
+  "paymentBouncedOwner": "The tenant's direct debit bounced. The tenant has been informed and can pay within 12 hours.",
+  "paymentBouncedAdmin": "A direct debit bounced (tenant: {tenant}).",
+  "admin": {
+    "deletionRequested": { "subject": "Account deletion request", "body": "{name} has requested deletion of their account." }
+  }
+}

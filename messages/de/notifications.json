@@ -1,0 +1,29 @@
+{
+  "greeting": "Hallo {name},",
+  "openLink": "Öffnen",
+  "footer": "Benachrichtigungen kannst du im Profil abschalten: {url}",
+  "requestNew": { "subject": "Neue Anfrage für Platz {spot}", "body": "{tenant} möchte deinen Platz {spot} von {start} bis {end} für {price} mieten." },
+  "requestConfirmed": { "subject": "Zugesagt: Platz {spot}", "body": "Die Buchung für Platz {spot} von {start} bis {end} ({price}) ist bestätigt. Der Mietvertrag liegt als PDF bei." },
+  "requestDeclined": { "subject": "Anfrage abgelehnt: Platz {spot}", "body": "Deine Anfrage für Platz {spot} von {start} bis {end} wurde leider abgelehnt." },
+  "requestExpired": { "subject": "Anfrage abgelaufen: Platz {spot}", "body": "Deine Anfrage für Platz {spot} von {start} bis {end} wurde nicht rechtzeitig beantwortet und ist abgelaufen." },
+  "bookingCancelled": { "subject": "Storniert: Platz {spot}", "body": "Die Buchung für Platz {spot} von {start} bis {end} wurde storniert." },
+  "paymentProblem": { "subject": "Zahlungsproblem: Platz {spot}", "body": "Bei der Zahlung für Platz {spot} ({start} – {end}, {price}) ist ein Problem aufgetreten." },
+  "startsSoon": { "subject": "Gleich geht's los: Platz {spot}", "body": "Deine Buchung für Platz {spot} beginnt um {start}." },
+  "endsSoon": { "subject": "Bald vorbei: Platz {spot}", "body": "Deine Buchung für Platz {spot} endet um {end}. Bitte gib den Platz pünktlich frei oder verlängere in der App." },
+  "problemReported": { "subject": "Problemmeldung zu Platz {spot}", "body": "{reporter} hat ein Problem zur Buchung für Platz {spot} ({start}) gemeldet:" },
+  "confirmLink": "Mit einem Klick zusagen",
+  "declineLink": "Mit einem Klick ablehnen",
+  "payoutHint": "Du erhältst ca. {payout} nach Gebühr des Zahlungsdienstleisters.",
+  "ownerConfirmedHint": "Mieter: {tenant}. Der Betrag wird dem Mieter jetzt belastet.",
+  "freeSpotsHint": "Andere freie Plätze für denselben Zeitraum findest du hier: {url}",
+  "refundHint": "Der volle Betrag von {price} wird automatisch erstattet.",
+  "cancelledByOwner": "Der Anbieter hat storniert. Begründung: {reason}",
+  "cancelledByTenant": "Der Mieter hat storniert. Der Platz ist wieder frei.",
+  "cancelledBySystem": "Die Buchung wurde automatisch storniert, weil die Zahlung nicht rechtzeitig nachgeholt wurde. Der Platz ist wieder frei.",
+  "paymentRetryHint": "Bitte zahle bis {deadline} in der App nach, sonst wird die Buchung automatisch storniert.",
+  "paymentBouncedOwner": "Die Lastschrift des Mieters ist geplatzt. Der Mieter wurde informiert und kann innerhalb von 12 Stunden nachzahlen.",
+  "paymentBouncedAdmin": "Eine Lastschrift ist geplatzt (Mieter: {tenant}).",
+  "admin": {
+    "deletionRequested": { "subject": "Antrag auf Kontolöschung", "body": "{name} hat die Löschung des eigenen Kontos beantragt." }
+  }
+}

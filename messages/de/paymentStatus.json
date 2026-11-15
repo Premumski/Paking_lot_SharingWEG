@@ -1,0 +1,10 @@
+{
+  "NONE": "Keine Zahlung",
+  "METHOD_SAVED": "Zahlungsmittel hinterlegt",
+  "PENDING": "Zahlung ausstehend",
+  "PROCESSING": "Zahlung in Bearbeitung",
+  "PAID": "Bezahlt",
+  "FAILED": "Zahlung fehlgeschlagen",
+  "REFUND_PENDING": "Erstattung läuft",
+  "REFUNDED": "Erstattet"
+}

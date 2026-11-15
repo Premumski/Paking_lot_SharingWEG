@@ -1,0 +1,9 @@
+{
+  "title": "Respond to request",
+  "invalid": "This link is invalid, has expired or belongs to another account.",
+  "alreadyHandled": "This request has already been handled.",
+  "open": "Open booking",
+  "summary": "Request from {tenant} for spot {spot}:",
+  "confirm": "Confirm now",
+  "decline": "Decline now"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Einnahmen & Ausgaben",
+  "onboardingReturned": "Danke! Sobald der Zahlungsdienstleister dein Konto freigibt, kannst du Preise über 0 € festlegen.",
+  "income": "Einnahmen als Anbieter",
+  "payoutAccount": "Auszahlungskonto",
+  "connected": "verbunden",
+  "notConnected": "nicht verbunden – nur 0-€-Preise möglich",
+  "feeInfo": "Keine Plattformgebühr. Die Gebühr des Zahlungsdienstleisters (ca. 1,5 % + 0,25 € bei Karte, 0,35 € bei Lastschrift) trägst du als Anbieter.",
+  "connectAccount": "Konto verbinden",
+  "manageAccount": "Konto verwalten",
+  "booking": "Buchung",
+  "amount": "Betrag",
+  "fee": "Gebühr",
+  "net": "Netto",
+  "status": "Status",
+  "none": "Keine Einträge.",
+  "payouts": "Auszahlungen",
+  "noPayouts": "Noch keine Auszahlungen.",
+  "payoutStatus": { "pending": "geplant", "in_transit": "unterwegs", "paid": "ausgezahlt", "failed": "fehlgeschlagen", "canceled": "abgebrochen" },
+  "statement": "Jahresauszug",
+  "expenses": "Ausgaben als Mieter",
+  "receipt": "Beleg"
+}

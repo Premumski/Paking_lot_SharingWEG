@@ -1,0 +1,16 @@
+{
+  "title": "Booking horizon & time rules",
+  "tier1Hours": { "label": "Tier 1: bookings under 1 day – lead time in hours", "help": "Default 48 h (2 days). Range 1 h – 30 days." },
+  "tier2Days": { "label": "Tier 2: 1 day to under 1 week – lead time in days", "help": "Default 14 days. Range 1–90 days." },
+  "tier3Months": { "label": "Tier 3: 1 week to 1 month – lead time in months", "help": "Default 1 month. Range 1–12 months." },
+  "maxDuration": { "label": "Maximum booking duration", "unit": "Unit", "help": "Default 1 month. Range 1 day – 12 months." },
+  "days": "days",
+  "months": "months",
+  "minLeadMinutes": { "label": "Minimum lead time in minutes", "help": "Earliest start from now. Default 0. Range 0–48 h." },
+  "minDurationMinutes": { "label": "Minimum duration in minutes", "help": "Default 60. Range 15 min – 24 h, in 15-minute steps." },
+  "fairnessLimit": { "label": "Fairness limit", "help": "Confirmed bookings not yet started per resident. Default 3, 0 = unlimited." },
+  "openRequestLimit": { "label": "Open requests per resident", "help": "Default 5. Range 1–20." },
+  "requestExpiryHours": { "label": "Expiry of unanswered requests (hours)", "help": "Requests expire at the earlier of booking start or X hours after receipt. Default 48." },
+  "existingUntouched": "Changes only apply to new requests. Existing bookings and requests remain unchanged.",
+  "save": "Save"
+}

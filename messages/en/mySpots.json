@@ -1,0 +1,13 @@
+{
+  "title": "My spots",
+  "freeOnlyHint": "Without a connected payout account you can only offer your spots for free (€0).",
+  "connectAccount": "Connect payout account",
+  "day": "day",
+  "paused": "Paused",
+  "active": "Active",
+  "summary": "{rules} rules · {requests} open requests · {confirmed} confirmed",
+  "instantOn": "Instant booking on",
+  "instantOff": "Manual confirmation",
+  "manage": "Manage",
+  "noSpots": "No spot has been assigned to you yet."
+}

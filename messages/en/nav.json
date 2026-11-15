@@ -1,0 +1,14 @@
+{
+  "brand": "Parking Sharing",
+  "main": "Main navigation",
+  "menu": "Menu",
+  "logout": "Log out",
+  "skipToContent": "Skip to content",
+  "search": "Find a spot",
+  "bookings": "My bookings",
+  "mySpots": "My spots",
+  "money": "Income & expenses",
+  "profile": "Profile",
+  "admin": "Administration",
+  "dev": "Test tools"
+}

@@ -1,0 +1,6 @@
+{
+  "inviteSubject": "Invitation to Parking Sharing",
+  "inviteBody": "Hi {name},\n\nthe property management has created an account for you. Set your password using this link (valid for 72 hours, single use):\n\n{url}\n\nBest regards\nParking Sharing",
+  "resetSubject": "Reset your password",
+  "resetBody": "Hi {name},\n\nyou can set a new password using this link (valid for 1 hour):\n\n{url}\n\nIf you did not request this, please ignore this e-mail.\n\nBest regards\nParking Sharing"
+}

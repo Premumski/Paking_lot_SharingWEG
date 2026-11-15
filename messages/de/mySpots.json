@@ -1,0 +1,13 @@
+{
+  "title": "Meine Plätze",
+  "freeOnlyHint": "Ohne verbundenes Auszahlungskonto kannst du deine Plätze nur kostenlos (0 €) anbieten.",
+  "connectAccount": "Auszahlungskonto verbinden",
+  "day": "Tag",
+  "paused": "Pausiert",
+  "active": "Aktiv",
+  "summary": "{rules} Regeln · {requests} offene Anfragen · {confirmed} Zusagen",
+  "instantOn": "Sofortzusage aktiv",
+  "instantOff": "Manuell bestätigen",
+  "manage": "Verwalten",
+  "noSpots": "Dir ist noch kein Platz zugeordnet."
+}
